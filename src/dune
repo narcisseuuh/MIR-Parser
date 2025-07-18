@@ -1,0 +1,18 @@
+(rule
+ (targets libmir_parser.a dllmir_parser.so)
+ (deps (glob_files *.rs))
+ (action
+   (progn
+    (run sh -c "cd %{project_root}/../.. && make run")
+    (run sh -c
+       "mv %{project_root}/../../target/release/libmir_parser.so ./dllmir_parser.so 2> /dev/null || \
+         mv %{project_root}/../../target/release/libmir_parser.dylib ./dllmir_parser.so")
+    (run mv %{project_root}/../../target/release/libmir_parser.a libmir_parser.a))))
+
+(library
+ (name rustc_parser)
+ (public_name rustc-parser)
+ (modules rustc_ast rustc_pp)
+ (foreign_archives mir_parser)
+ (c_library_flags
+   (-lpthread -lc -lm)))

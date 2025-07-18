@@ -1,0 +1,5 @@
+(dirs :standard \ target)
+
+(env
+  (dev
+    (flags (:standard -w -30))))

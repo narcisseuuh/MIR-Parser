@@ -1,0 +1,10 @@
+(executables
+ (names test)
+ (modules test)
+ (libraries rustc-parser))
+
+(rule
+ (alias runtest)
+ (action
+    (run ./run_test.sh)))
+

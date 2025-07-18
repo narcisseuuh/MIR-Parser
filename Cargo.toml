@@ -1,0 +1,19 @@
+[package]
+name = "mir-parser"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["staticlib", "cdylib"]
+
+[dependencies]
+ocaml="*"
+ocaml-build = "*"
+rustc_driver = { path="rustc_driver_impl" }
+rustc_interface = { git = "https://github.com/rust-lang/rust", rev = "bf5e6cc7a7a7eb03e3ed9b875d76530eddd47d5f" }
+rustc_middle = { git = "https://github.com/rust-lang/rust", rev = "bf5e6cc7a7a7eb03e3ed9b875d76530eddd47d5f" }
+rustc_span = { git = "https://github.com/rust-lang/rust", rev = "bf5e6cc7a7a7eb03e3ed9b875d76530eddd47d5f" }
+rustc_index = { git = "https://github.com/rust-lang/rust", rev = "bf5e6cc7a7a7eb03e3ed9b875d76530eddd47d5f" }
+
+[build-dependencies]
+ocaml-build="*"
